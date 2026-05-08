@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Post Details</title>
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- ===== Boxicons ===== -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- ===== Font Awesome ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ===== Header ===== -->
+    <header>
+
+        <div class="nav container">
+
+            <!-- Logo -->
+            <a href="/" class="logo">
+                R <span>O</span>Y
+            </a>
+
+            <!-- Right Side -->
+            <div class="nav-right">
+
+                <!-- Admin Button -->
+                <a href="/admin" class="admin-btn">
+                    <i class='bx bx-user'></i>
+                </a>
+
+                <!-- Write Button -->
+                <a href="/add" class="write-btn">
+                    <i class='bx bx-pencil'></i> Write
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ===== Post Header ===== -->
+    <section class="post-header">
+
+        <div class="header-content post-container">
+
+            <!-- Category -->
+            <h2 class="sub-heading" id="post-catagory"></h2>
+
+            <!-- Title -->
+            <h1 class="header-title" id="post-title"></h1>
+
+            <!-- Post Image -->
+            <div id="post-image"></div>
+
+        </div>
+
+    </section>
+
+    <!-- ===== Post Content ===== -->
+    <section class="post-content post-container" id="post-content">
+
+    </section>
+
+    <!-- share -->
+     <div class="share post-container">
+        <span class="share-title">share this article</span>
+        
+        <div class="social">
+
+         <!-- Facebook -->
+            <a href="#" aria-label="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <!-- Twitter / X -->
+            <a href="#" aria-label="Twitter">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="#" aria-label="Instagram">
+                <i class='bx bxl-instagram'></i>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="#" aria-label="LinkedIn">
+                <i class='bx bxl-linkedin'></i>
+            </a>
+            </div>
+     </div>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer-container">
+
+        <p>&#169; Roy 2026</p>
+
+        <div class="social">
+
+            <!-- Facebook -->
+            <a href="#" aria-label="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <!-- Twitter / X -->
+            <a href="#" aria-label="Twitter">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="#" aria-label="Instagram">
+                <i class='bx bxl-instagram'></i>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="#" aria-label="LinkedIn">
+                <i class='bx bxl-linkedin'></i>
+            </a>
+
+        </div>
+
+    </footer>
+
+    <!-- ===== Main JS ===== -->
+    <script src="/js/main.js"></script>
+
+    <!-- ===== Post Details Script ===== -->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // =====================================
+            // Get title from URL
+            // Example:
+            // /post/My-Blog-Post
+            // =====================================
+
+            const postTitle = decodeURIComponent(
+                window.location.pathname.split("/").pop()
+            )
+            .replace(/-/g, " ")
+            .trim();
+
+            // =====================================
+            // Fetch Post Data
+            // =====================================
+
+            fetch(`/post/${encodeURIComponent(postTitle)}`)
+
+                .then((response) => {
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP Error: ${response.status}`);
+                    }
+
+                    return response.json();
+
+                })
+
+                .then((post) => {
+
+                    console.log(post);
+
+                    // =====================================
+                    // Set Post Title
+                    // =====================================
+
+                    document.getElementById('post-title').innerText =
+                        post.title || "No Title";
+
+
+                    // =====================================
+                    // Set Category
+                    // =====================================
+
+                    document.getElementById('post-catagory').innerText =
+                        post.category || "General";
+
+
+                    // =====================================
+                    // Set Image
+                    // =====================================
+
+                    if (post.image) {
+
+                        document.getElementById('post-image').innerHTML = `
+                        
+                            <img 
+                                src="${post.image}" 
+                                alt="${post.title}"
+                                class="header-img"
+                            >
+
+                        `;
+
+                    }
+
+
+                    // =====================================
+                    // Set Content
+                    // =====================================
+
+                    document.getElementById('post-content').innerHTML =
+                        post.content || "<p>No content available</p>";
+
+                })
+
+                .catch((error) => {
+
+                    console.error("Error fetching post:", error);
+
+                    document.getElementById('post-content').innerHTML = `
+                    
+                        <h2>Post Not Found</h2>
+                        <p>Unable to load blog post.</p>
+                    
+                    `;
+
+                });
+
+        });
+
+    </script>
+
+</body>
+</html>

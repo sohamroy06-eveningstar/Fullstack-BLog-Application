@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullstack Blog Application</title>
+
+    <!-- ===== Your CSS ===== -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- ===== Boxicons CDN (stable unified build — includes Basic, Filled & Brands) ===== -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- ===== Font Awesome 6 (needed for fa-brands fa-facebook) ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+    <!-- ===== Header ===== -->
+    <header>
+        <div class="nav container">
+
+            <!-- Logo -->
+            <a href="/" class="logo">R <span>O</span>Y</a>
+
+            <!-- Nav Right -->
+            <div class="nav-right">
+                <a href="/admin" class="admin-btn">
+                    <i class='bx bx-user'></i>
+                </a>
+                <a href="/add" class="write-btn">
+                    <i class='bx bx-pencil'></i> Write
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ===== Home / Hero ===== -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h2>The Roy Blog</h2>
+
+            <!-- Search Box -->
+            <div class="search-box">
+                <i class='bx bx-search'></i>
+                <input type="search" placeholder="Search">
+            </div>
+        </div>
+    </section>
+    <!-- post filter -->
+     <div class="post-filter container">
+        <span class="filter-item active-filter "data-filter="all">All</span>
+        <span class="filter-item" data-filter="art">Art</span>
+        <span class="filter-item" data-filter="Technology">Technology</span>
+        <span class="filter-item" data-filter="Food">Food</span>
+     </div>
+
+    <!-- ===== Posts ===== -->
+    <section class="posts container" id="posts">
+        <!-- Posts will be injected here by main.js -->
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <div class="footer-container">
+        <p>&#169; Roy 2026</p>
+        <div class="social">
+            <!-- Font Awesome icon -->
+            <a href="#" aria-label="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <!-- Boxicons brand icons (bxl- prefix = brand logos) -->
+            <a href="#" aria-label="X / Twitter">
+                <i class='fa-brands fa-x-twitter'></i>
+            </a>
+            <a href="#" aria-label="Instagram">
+                <i class='bx bxl-instagram'></i>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <i class='bx bxl-linkedin'></i>
+            </a>
+        </div>
+    </div>
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- ===== JS ===== -->
+    <script src="/js/main.js"></script>
+   <script>
+
+    // FILTER JS
+
+    $(document).ready(function () {
+
+        $(".filter-item").click(function () {
+
+            const value = $(this).attr("data-filter");
+
+
+
+            if (value == "all") {
+
+                $(".post").show(1000);
+
+            } else {
+
+                $(".post")
+                    .not("." + value)
+                    .hide(1000);
+
+                $(".post")
+                    .filter("." + value)
+                    .show(1000);
+
+            }
+
+        });
+
+
+
+        // ACTIVE BUTTON
+
+        $(".filter-item").click(function () {
+
+            $(this)
+                .addClass("active-filter")
+                .siblings()
+                .removeClass("active-filter");
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
