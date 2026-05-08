@@ -1,137 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- ========================================
+         BASIC META
+    ========================================= -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullstack Blog Application</title>
 
-    <!-- ===== Your CSS ===== -->
-    <link rel="stylesheet" href="/css/style.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <!-- ===== Boxicons CDN (stable unified build — includes Basic, Filled & Brands) ===== -->
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- BASE URL -->
 
-    <!-- ===== Font Awesome 6 (needed for fa-brands fa-facebook) ===== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <base href="/https://fullstack-blog-application.onrender.com/">
+
+
+    <!-- ========================================
+         PRIMARY SEO
+    ========================================= -->
+
+    <title>
+        Roy Blog | Fullstack Developer & Tech Blog
+    </title>
+
+    <meta
+        name="title"
+        content="Roy Blog | Fullstack Developer & Tech Blog"
+    >
+
+    <meta
+        name="description"
+        content="Roy Blog is a modern fullstack web development blog by Soham Roy covering JavaScript, Node.js, Express.js, frontend development, backend systems, UI/UX design, SEO, and modern web technologies."
+    >
+
+    <meta
+        name="keywords"
+        content="Fullstack Developer, Web Developer, Node.js Blog, JavaScript Blog, Express.js, Frontend Developer, Backend Developer, SEO, UI UX Design, Web Development, Programming Blog, Tech Blog"
+    >
+
+    <meta
+        name="author"
+        content="Soham Roy"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="language"
+        content="English"
+    >
+
+
+    <!-- ========================================
+         OPEN GRAPH SEO
+    ========================================= -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="https://fullstack-blog-application.onrender.com/"
+    >
+
+    <meta
+        property="og:title"
+        content="Roy Blog | Fullstack Developer & Tech Blog"
+    >
+
+    <meta
+        property="og:description"
+        content="Modern fullstack development blog covering Node.js, JavaScript, SEO, UI/UX, frontend and backend development."
+    >
+
+    <meta
+        property="og:image"
+        content="https://fullstack-blog-application.onrender.com/favicon.png"
+    >
+
+
+    <!-- ========================================
+         TWITTER / X SEO
+    ========================================= -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Roy Blog | Fullstack Developer & Tech Blog"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Modern web development blog by Soham Roy."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://fullstack-blog-application.onrender.com/favicon.png"
+    >
+
+
+    <!-- ========================================
+         FAVICON
+    ========================================= -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="/Favicon.png"
+    >
+
+
+    <!-- ========================================
+         THEME COLOR
+    ========================================= -->
+
+    <meta
+        name="theme-color"
+        content="#ffc72c"
+    >
+
+
+    <!-- ========================================
+         CANONICAL URL
+    ========================================= -->
+
+    <link
+        rel="canonical"
+        href="https://fullstack-blog-application.onrender.com/"
+    >
+
+
+    <!-- ========================================
+         CSS
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+
+    <!-- ========================================
+         BOXICONS
+    ========================================= -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- ========================================
+         FONT AWESOME
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
 
 </head>
+
 <body>
 
-    <!-- ===== Header ===== -->
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+
     <header>
+
         <div class="nav container">
 
-            <!-- Logo -->
-            <a href="/" class="logo">R <span>O</span>Y</a>
+            <!-- LOGO -->
 
-            <!-- Nav Right -->
+            <a href="/" class="logo">
+                R <span>O</span>Y
+            </a>
+
+
+            <!-- NAV RIGHT -->
+
             <div class="nav-right">
-                <a href="/admin" class="admin-btn">
+
+                <a
+                    href="/admin"
+                    class="admin-btn"
+                >
                     <i class='bx bx-user'></i>
                 </a>
-                <a href="/add" class="write-btn">
-                    <i class='bx bx-pencil'></i> Write
+
+                <a
+                    href="/add"
+                    class="write-btn"
+                >
+                    <i class='bx bx-pencil'></i>
+                    Write
                 </a>
+
             </div>
 
         </div>
+
     </header>
 
-    <!-- ===== Home / Hero ===== -->
+
+
+    <!-- ========================================
+         HERO SECTION
+    ========================================= -->
+
     <section class="home" id="home">
+
         <div class="home-content">
-            <h2>The Roy Blog</h2>
 
-            <!-- Search Box -->
+            <h2>
+                The Roy Blog
+            </h2>
+
+
+            <!-- SEARCH -->
+
             <div class="search-box">
+
                 <i class='bx bx-search'></i>
-                <input type="search" placeholder="Search">
+
+                <input
+                    type="search"
+                    placeholder="Search"
+                >
+
             </div>
+
         </div>
-    </section>
-    <!-- post filter -->
-     <div class="post-filter container">
-        <span class="filter-item active-filter "data-filter="all">All</span>
-        <span class="filter-item" data-filter="art">Art</span>
-        <span class="filter-item" data-filter="Technology">Technology</span>
-        <span class="filter-item" data-filter="Food">Food</span>
-     </div>
 
-    <!-- ===== Posts ===== -->
-    <section class="posts container" id="posts">
-        <!-- Posts will be injected here by main.js -->
     </section>
 
-    <!-- ===== Footer ===== -->
+
+
+    <!-- ========================================
+         FILTERS
+    ========================================= -->
+
+    <div class="post-filter container">
+
+        <span
+            class="filter-item active-filter"
+            data-filter="all"
+        >
+            All
+        </span>
+
+        <span
+            class="filter-item"
+            data-filter="art"
+        >
+            Art
+        </span>
+
+        <span
+            class="filter-item"
+            data-filter="technology"
+        >
+            Technology
+        </span>
+
+        <span
+            class="filter-item"
+            data-filter="food"
+        >
+            Food
+        </span>
+
+    </div>
+
+
+
+    <!-- ========================================
+         POSTS
+    ========================================= -->
+
+    <section
+        class="posts container"
+        id="posts"
+    >
+        <!-- POSTS LOAD HERE -->
+    </section>
+
+
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+
     <div class="footer-container">
-        <p>&#169; Roy 2026</p>
+
+        <p>
+            &#169; Roy 2026
+        </p>
+
+
         <div class="social">
-            <!-- Font Awesome icon -->
-            <a href="#" aria-label="Facebook">
+
+            <a
+                href="#"
+                aria-label="Facebook"
+            >
                 <i class="fa-brands fa-facebook"></i>
             </a>
-            <!-- Boxicons brand icons (bxl- prefix = brand logos) -->
-            <a href="#" aria-label="X / Twitter">
+
+            <a
+                href="#"
+                aria-label="X / Twitter"
+            >
                 <i class='fa-brands fa-x-twitter'></i>
             </a>
-            <a href="#" aria-label="Instagram">
+
+            <a
+                href="#"
+                aria-label="Instagram"
+            >
                 <i class='bx bxl-instagram'></i>
             </a>
-            <a href="#" aria-label="LinkedIn">
+
+            <a
+                href="#"
+                aria-label="LinkedIn"
+            >
                 <i class='bx bxl-linkedin'></i>
             </a>
+
         </div>
+
     </div>
-   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <!-- ===== JS ===== -->
+
+
+    <!-- ========================================
+         JQUERY
+    ========================================= -->
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+
+    <!-- ========================================
+         MAIN JS
+    ========================================= -->
+
     <script src="/js/main.js"></script>
-   <script>
-
-    // FILTER JS
-
-    $(document).ready(function () {
-
-        $(".filter-item").click(function () {
-
-            const value = $(this).attr("data-filter");
 
 
 
-            if (value == "all") {
+    <!-- ========================================
+         FILTER JS
+    ========================================= -->
 
-                $(".post").show(1000);
+    <script>
 
-            } else {
+        $(document).ready(function () {
 
-                $(".post")
-                    .not("." + value)
-                    .hide(1000);
+            // FILTER POSTS
 
-                $(".post")
-                    .filter("." + value)
-                    .show(1000);
+            $(".filter-item").click(function () {
 
-            }
+                const value =
+                    $(this).attr("data-filter");
+
+
+
+                if (value == "all") {
+
+                    $(".post").show(1000);
+
+                } else {
+
+                    $(".post")
+                        .not("." + value)
+                        .hide(1000);
+
+                    $(".post")
+                        .filter("." + value)
+                        .show(1000);
+
+                }
+
+            });
+
+
+
+            // ACTIVE FILTER BUTTON
+
+            $(".filter-item").click(function () {
+
+                $(this)
+
+                    .addClass("active-filter")
+
+                    .siblings()
+
+                    .removeClass("active-filter");
+
+            });
 
         });
 
-
-
-        // ACTIVE BUTTON
-
-        $(".filter-item").click(function () {
-
-            $(this)
-                .addClass("active-filter")
-                .siblings()
-                .removeClass("active-filter");
-
-        });
-
-    });
-
-</script>
+    </script>
 
 </body>
+
 </html>

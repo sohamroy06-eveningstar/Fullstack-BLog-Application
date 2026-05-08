@@ -2,172 +2,528 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
 
+   <!-- ========================================
+         BASIC META
+    ========================================= -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- BASE URL -->
+
+    <base href="/https://fullstack-blog-application.onrender.com/">
+
+
+    <!-- ========================================
+         PRIMARY SEO
+    ========================================= -->
+
+    <title>
+        Roy Blog | admin
+    </title>
+
+    <meta
+        name="title"
+        content="Roy Blog | Fullstack Developer & Tech Blog"
+    >
+
+    <meta
+        name="description"
+        content="Roy Blog is a modern fullstack web development blog by Soham Roy covering JavaScript, Node.js, Express.js, frontend development, backend systems, UI/UX design, SEO, and modern web technologies."
+    >
+
+    <meta
+        name="keywords"
+        content="Fullstack Developer, Web Developer, Node.js Blog, JavaScript Blog, Express.js, Frontend Developer, Backend Developer, SEO, UI UX Design, Web Development, Programming Blog, Tech Blog"
+    >
+
+    <meta
+        name="author"
+        content="Soham Roy"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="language"
+        content="English"
+    >
+
+
+    <!-- ========================================
+         OPEN GRAPH SEO
+    ========================================= -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="https://fullstack-blog-application.onrender.com/"
+    >
+
+    <meta
+        property="og:title"
+        content="Roy Blog | Fullstack Developer & Tech Blog"
+    >
+
+    <meta
+        property="og:description"
+        content="Modern fullstack development blog covering Node.js, JavaScript, SEO, UI/UX, frontend and backend development."
+    >
+
+    <meta
+        property="og:image"
+        content="https://fullstack-blog-application.onrender.com/favicon.png"
+    >
+
+
+    <!-- ========================================
+         TWITTER / X SEO
+    ========================================= -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Roy Blog | Fullstack Developer & Tech Blog"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Modern web development blog by Soham Roy."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://fullstack-blog-application.onrender.com/favicon.png"
+    >
+
+
+    <!-- ========================================
+         FAVICON
+    ========================================= -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="/Favicon.png"
+    >
+
+
+    <!-- ========================================
+         THEME COLOR
+    ========================================= -->
+
+    <meta
+        name="theme-color"
+        content="#ffc72c"
+    >
+
+
+    <!-- ========================================
+         CANONICAL URL
+    ========================================= -->
+
+    <link
+        rel="canonical"
+        href="https://fullstack-blog-application.onrender.com/"
+    >
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
 </head>
 
 <body>
 
     <div class="admin-panel">
 
+        <!-- HEADING -->
+
         <h1>Admin Panel</h1>
 
-        <a href="/add" class="add-post-link">
+
+
+        <!-- ADD POST BUTTON -->
+
+        <a
+            href="/add"
+            class="add-post-link"
+        >
             Add New Post
         </a>
+
+
+
+        <!-- POSTS TABLE -->
 
         <table id="post-table">
 
             <thead>
+
                 <tr>
+
                     <th>Image</th>
+
                     <th>Title</th>
+
                     <th>Category</th>
+
                     <th>Actions</th>
+
                 </tr>
+
             </thead>
 
             <tbody>
-                <!-- Posts will load dynamically -->
+                <!-- POSTS LOAD HERE -->
             </tbody>
 
         </table>
 
-        <a href="/" class="admin-back-link">
+
+
+        <!-- BACK BUTTON -->
+
+        <a
+            href="/"
+            class="admin-back-link"
+        >
             Back To Home
         </a>
 
     </div>
 
-    <!-- JavaScript -->
+
+
+    <!-- JAVASCRIPT -->
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
-            fetch("/posts")
+                fetch("/posts")
 
-                .then((response) => response.json())
+                    .then((response) =>
+                        response.json()
+                    )
 
-                .then((posts) => {
+                    .then((posts) => {
 
-                    const postsTableBody =
-                        document.querySelector("#post-table tbody");
+                        const postTable =
+                            document.getElementById(
+                                "post-table"
+                            );
+
+                        const postsTableBody =
+                            document.querySelector(
+                                "#post-table tbody"
+                            );
 
 
 
-                    // SHOW POSTS
+                        // =========================
+                        // EMPTY STATE
+                        // =========================
 
-                    postsTableBody.innerHTML = posts.map((post) => `
+                        if(posts.length === 0){
 
-                        <tr>
+                            postTable.style.display = "none";
 
-                            <td>
-                                ${
-                                    post.image
-                                    ? `<img src="${post.image}" alt="${post.title}">`
-                                    : "No Image"
+                            const emptyMessage =
+                                document.createElement("div");
+
+                            emptyMessage.classList.add(
+                                "empty-posts"
+                            );
+
+                            emptyMessage.innerHTML = `
+
+                                <h2>
+                                    No Posts Found
+                                </h2>
+
+                                <p>
+                                    Start by creating your first blog post.
+                                </p>
+
+                            `;
+
+                            document
+                                .querySelector(
+                                    ".admin-panel"
+                                )
+
+                                .insertBefore(
+
+                                    emptyMessage,
+
+                                    document.querySelector(
+                                        ".admin-back-link"
+                                    )
+
+                                );
+
+                            return;
+                        }
+
+
+
+                        // =========================
+                        // SHOW POSTS
+                        // =========================
+
+                        postsTableBody.innerHTML =
+                            posts.map((post) => `
+
+                                <tr>
+
+                                    <td>
+
+                                        ${
+                                            post.image
+
+                                            ? `
+
+                                                <img
+                                                    src="${post.image}"
+                                                    alt="${post.title}"
+                                                >
+
+                                              `
+
+                                            : "No Image"
+                                        }
+
+                                    </td>
+
+                                    <td>
+                                        ${post.title}
+                                    </td>
+
+                                    <td>
+
+                                        <span>
+
+                                            ${
+                                                post.category
+                                                || "No Category"
+                                            }
+
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <button
+
+                                            class="delete-button"
+
+                                            data-id="${post.id}"
+
+                                        >
+
+                                            Delete
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            `).join("");
+
+
+
+                        // =========================
+                        // DELETE POST
+                        // =========================
+
+                        const deleteButtons =
+
+                            document.querySelectorAll(
+                                ".delete-button"
+                            );
+
+
+
+                        deleteButtons.forEach((button) => {
+
+                            button.addEventListener(
+                                "click",
+
+                                function () {
+
+                                    const postId =
+                                        this.dataset.id;
+
+
+
+                                    const confirmDelete =
+                                        confirm(
+
+                                            "Are you sure you want to delete this post?"
+
+                                        );
+
+
+
+                                    if(!confirmDelete) return;
+
+
+
+                                    fetch(
+
+                                        `/delete/${postId}`,
+
+                                        {
+                                            method: "DELETE"
+                                        }
+
+                                    )
+
+                                    .then((response) =>
+                                        response.json()
+                                    )
+
+                                    .then((data) => {
+
+                                        alert(
+                                            data.message
+                                        );
+
+
+
+                                        // REMOVE ROW
+
+                                        this.closest("tr")
+                                            .remove();
+
+
+
+                                        // CHECK EMPTY AGAIN
+
+                                        const remainingRows =
+
+                                            document.querySelectorAll(
+
+                                                "#post-table tbody tr"
+
+                                            );
+
+
+
+                                        if(
+                                            remainingRows.length === 0
+                                        ){
+
+                                            postTable.style.display =
+                                                "none";
+
+
+
+                                            const emptyMessage =
+
+                                                document.createElement(
+                                                    "div"
+                                                );
+
+
+
+                                            emptyMessage.classList.add(
+                                                "empty-posts"
+                                            );
+
+
+
+                                            emptyMessage.innerHTML = `
+
+                                                <h2>
+                                                    No Posts Found
+                                                </h2>
+
+                                                <p>
+                                                    Start by creating your first blog post.
+                                                </p>
+
+                                            `;
+
+
+
+                                            document
+
+                                                .querySelector(
+                                                    ".admin-panel"
+                                                )
+
+                                                .insertBefore(
+
+                                                    emptyMessage,
+
+                                                    document.querySelector(
+                                                        ".admin-back-link"
+                                                    )
+
+                                                );
+                                        }
+
+                                    })
+
+                                    .catch((error) => {
+
+                                        console.log(
+
+                                            "Delete Error:",
+
+                                            error
+
+                                        );
+
+                                    });
+
                                 }
-                            </td>
 
-                            <td>${post.title}</td>
-
-                            <td>${post.category || "No Category"}</td>
-
-                            <td>
-                                <button 
-                                    class="delete-button"
-                                    data-id="${post.id}"
-                                >
-                                    Delete
-                                </button>
-                            </td>
-
-                        </tr>
-
-                    `).join("");
-
-
-
-                    // DELETE POST
-
-                    const deleteButtons =
-                        document.querySelectorAll(".delete-button");
-
-                    deleteButtons.forEach((button) => {
-
-                        button.addEventListener("click", function () {
-
-                            const postId = this.dataset.id;
-
-                            const confirmDelete =
-                                confirm("Are you sure you want to delete this post?");
-
-                            if (!confirmDelete) return;
-
-
-
-                            fetch(`/delete/${postId}`, {
-                                method: "DELETE"
-                            })
-
-                            .then((response) => response.json())
-
-                            .then((data) => {
-
-                                alert(data.message);
-
-                                location.reload();
-
-                            })
-
-                            .catch((error) => {
-
-                                console.log("Delete Error:", error);
-
-                            });
+                            );
 
                         });
 
-                    });
-
-                })
-
-                .catch((error) => {
-
-                    console.log("Fetch Error:", error);
-                    // delete post event lister
-
-                    document.querySelector(".delete-button").forEach((button)=>{
-                        button.addEventListener("click",function(){
-                            const postId = this.getAttribute("dataid")
-                            fetch(`/delete/${postId}`,{
-                                method:"POST"
-
-                            })
-                            .then((Response)=>{
-                                if(!Response.ok){
-                                    throw new Error("Network Response was not ok");
-                                }
-                                // remove the row from table
-                                this.closest("tr").remove();
-                            })
-                            .catch((error)=>{
-                                console.error(
-                                    "there was a problem with the fetch operation",
-                                    error
-                                )
-                            })
-                        })
                     })
 
-                });
+                    .catch((error) => {
 
-        });
+                        console.log(
+
+                            "Fetch Error:",
+
+                            error
+
+                        );
+
+                    });
+
+            }
+
+        );
 
     </script>
 

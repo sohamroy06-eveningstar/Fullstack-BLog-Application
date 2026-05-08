@@ -960,3 +960,200 @@ header{
     }
 
 }
+/* EMPTY POSTS */
+
+.empty-posts{
+
+    width: 100%;
+
+    text-align: center;
+
+    margin-top: 3rem;
+
+    padding: 3rem 2rem;
+
+    background: white;
+
+    border: 3px solid #111;
+
+    border-radius: 24px;
+
+    box-shadow: 6px 6px 0 #111;
+}
+
+.empty-posts h2{
+
+    font-size: 2rem;
+
+    font-weight: 800;
+
+    margin-bottom: 1rem;
+}
+
+.empty-posts p{
+
+    color: #666;
+
+    font-size: 1rem;
+}
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer-container{
+
+    width: 100%;
+
+    max-width: 1180px;
+
+    margin: 5rem auto 2rem;
+
+    padding: 1.2rem 1.5rem;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    background: rgba(255,255,255,0.75);
+
+    backdrop-filter: blur(12px);
+
+    border: 2px solid #111;
+
+    border-radius: 22px;
+
+    box-shadow: 6px 6px 0 #111;
+}
+
+
+/* COPYRIGHT */
+
+.footer-container p{
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    color: #111;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* SOCIAL */
+
+.social{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.9rem;
+}
+
+
+/* ICONS */
+
+.social a{
+
+    width: 46px;
+
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: white;
+
+    border: 2px solid #111;
+
+    border-radius: 14px;
+
+    box-shadow: 4px 4px 0 #111;
+
+    transition: 0.3s ease;
+}
+
+
+/* ICON */
+
+.social .bx,
+.social .fa-brands{
+
+    font-size: 1.25rem;
+
+    color: #111;
+}
+
+
+/* HOVER */
+
+.social a:hover{
+
+    transform: translateY(-5px);
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media(max-width:768px){
+
+    .footer-container{
+
+        width: calc(100% - 24px);
+
+        padding: 1.2rem;
+
+        border-radius: 20px;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+/* ========================================
+   MOBILE SPACING FIX
+======================================== */
+
+@media(max-width:570px){
+
+    .home{
+
+        min-height: auto;
+
+        padding-top: 120px;
+
+        padding-bottom: 60px;
+    }
+
+    .post-filter{
+
+        margin-top: 2rem;
+
+        margin-bottom: 4rem;
+    }
+
+    .posts{
+
+        margin-top: 2rem;
+    }
+
+    .footer-container{
+
+        margin-top: 5rem;
+
+        margin-bottom: 2rem;
+    }
+
+}
